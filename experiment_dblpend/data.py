@@ -37,6 +37,7 @@ def get_trajectory_lagrangian(y0, times, **kwargs):
 
 @partial(jax.jit, backend='cpu')
 def get_trajectory_analytic(y0, times, **kwargs):
+    print(f'times : {times}, type : {type(times)}')
     return odeint(analytical_fn, y0, t=times, rtol=1e-10, atol=1e-10, **kwargs)
 
 def get_dataset(seed=0, samples=1, t_span=[0,2000], fps=1, test_split=0.5, **kwargs):
